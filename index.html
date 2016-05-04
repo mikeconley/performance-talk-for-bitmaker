@@ -1,157 +1,190 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine with Mozilla Theme</title>
+	<title>Web Performance Crash Course</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
         <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
 	<link rel="stylesheet" href="shower/themes/mozilla/styles/style.css">
+	<link rel="stylesheet" href="performance-talk.css">
 </head>
 <body class="list">
 	<header class="caption">
-        <h1>Shower Presentation Engine with Mozilla Theme</h1>
-		<p>Yours Truly, Famous Inc.</p>
+        <h1>Web Performance Crash Course</h1>
+		<p>Mike Conley, Mozilla</p>
 	</header>
 	<section class="slide cover" id="Cover"><div>
-        <h2>Shower (with Mozilla Theme) Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a> and <a href="http://mte90.net">Daniele Scasciafratte</a></p>
+    <h2>Web Performance Crash Course</h2>
+		<p>Brought to you by <a href="https://www.mikeconley.ca">Mike Conley (:mconley)</a></p>
 		<img src="pictures/cover.jpg" alt="">
 		<!--
 			To apply styles to the certain slides
 			set slide ID to get needed elements
 			-->
 	</div></section>
-	<section class="slide"><div>
-		<h2>Shower Key Features</h2>
-		<ol>
-            <li class="color-lightblue">Built on HTML, CSS and vanilla JavaScript</li>
-            <li class="color-nightlyblue">All modern browsers are supported</li>
-            <li class="color-blue">Slide themes are separated from engine</li>
-            <li class="color-yellow">Fully keyboard accessible</li>
-            <li class="color-lightorange">Printable to PDF</li>
-            <li class="color-orange">Choose text color from Firefox colors</li>
-		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+
+	<section class="slide shout"><div>
+		<h2>Hi! I'm Mike, and I work on Firefox</h2>
 	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>There is always a need for speed</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>The war on "jank"</h2>
+	</div></section>
+
 	<section class="slide red"><div>
-		<h2>Plain Text on Your Slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-	</div></section>
-	<section class="slide blue"><div>
-		<h2>All Kind of Lists</h2>
+		<h2>jank</h2>
 		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
+        <li class="next">Blocking of the UI due to overlong computation</li>
+        <li class="next">Distinct from a "hang", as the software will soon start responding again</li>
+        <li class="next">Example: <a href="https://jsfiddle.net/vLcx80mr/1/" target="_blank">https://jsfiddle.net/vLcx80mr/1/</a></li>
 		</ol>
 	</div></section>
-	<section class="slide darkgray"><div>
-		<h2>Serious Citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
+
+	<section class="slide shout"><div>
+		<h2>60fps</h2>
 	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>1s / 60fps = ~16.6ms</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>16ms</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2><del>16ms</del> <strong>10ms</strong></h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Performance is the art of being lazy</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Performance is also the art of <strong>measurement</strong></h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>The JavaScript Profiler</h2>
+	</div></section>
+
 	<section class="slide"><div>
-		<h2>Code Samples</h2>
+		<h2>Presenting pixels to the user</h2>
+		<ol>
+        <li class="next">JavaScript: responds to events</li>
+        <li class="next">Style calculations: calculates the rules that apply</li>
+        <li class="next">Laying out the boxes: sizes and positions everything</li>
+        <li class="next">Painting: draws things in the boxes</li>
+        <li class="next">Compositing: combines layers of things that were painted</li>
+		</ol>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>The more of those you can make fast (or skip), the better</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>JavaScript</h2>
+		<ol>
+        <li class="next">The more you can do with built-in HTML and CSS, the better</li>
+        <li class="next">CSS can do animations!</li>
+        <li class="next">Use <code>window.requestAnimationFrame</code> to do animation computations at the start of a frame</li>
+        <li class="next">Move heavy computations off to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">Workers</a></li>
+		</ol>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Style</h2>
+		<ol>
+        <li class="next"><em>Generally, there are bigger performance fish to fry.</em></li>
+        <li class="next">Try to make your selectors simple</li>
+        <li class="next">Generally, the more conditions and logic, the slower</li>
+        <li class="next">Browsers read CSS selectors from right to left</li>
+        <li class="next">The sooner you can narrow from right to left, the better</li>
+        <li class="next">Avoid <code>*</code></li>
+		</ol>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Layout</h2>
+		<ol>
+        <li class="next">Try to avoid layout if you can (changes to dimensions of things)</li>
+        <li class="next">Layout time is usually proportional to how many elements are on a page</li>
+        <li class="next"><strong>Avoid synchronous reflow</strong></li>
+		</ol>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Synchronous reflow</h2>
 		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code>&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
+			<code>nav.classList.add("wider");</code>
+			<code>console.log(nav.offsetHeight);</code>
+			<code>&nbsp;</code>
+			<code>// This is even worse - "layout thrashing"</code>
+			<code>for (var i = 0; i < boxes.length; ++i) {</code>
+			<code>  boxes[i].style.width = boxes[i].outerWidth + 5 + "px";</code>
+			<code>}</code>
 		</pre>
 	</div></section>
+
 	<section class="slide"><div>
-		<h2>Even Tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</div></section>
-	<section class="slide cover"><div>
-		<h2 class="left">Pictures</h2>
-		<img src="pictures/picture.jpg" alt="">
-	</div></section>
-	<section class="slide shout gradient-nightly"><div>
-		<h2>You can even shout this way</h2>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Inner Navigation</h2>
+		<h2>Painting</h2>
 		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
+        <li class="next">Use Paint Flashing to make sure you're not overpainting</li>
+        <li class="next">Avoid blurring CSS effects, like box-shadow</li>
 		</ol>
 	</div></section>
-	<section class="slide shout" id="SeeMore"><div>
-		<h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower">See more on GitHub</a></h2>
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-			#SeeMore img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
+
+	<section class="slide shout"><div>
+		<h2>Paint Flashing</h2>
 	</div></section>
+
 	<section class="slide"><div>
-        <h2>Question?</h2>
-        <figure class="frame place swing">
-        <img src="pictures/redpanda.jpg" alt="Red panda (Firefox)">
-        </figure>
-    </div></section>
-    
+		<h2>Try to animate using <code>transform</code> and <code>opacity</code> only</h2>
+		<ol>
+        <li class="next"><strong>This avoids layout and painting entirely</strong></li>
+        <li class="next">This is the smoothest you can probably make it</li>
+        <li class="next">Example: <a href="https://jsfiddle.net/Lgeugj4c/1/" target="_blank">https://jsfiddle.net/Lgeugj4c/1/</a></li>
+		</ol>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>It's a very good idea to understand the environment you're in</h2>
+		<p>I highly recommend taking some time out of your day to read:</p>
+		<p><a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank">How Browsers Work: Behind the scenes of modern web browsers</a> by Tali Garsiel Paul Irish</p>
+		<p>First published in 2011, but still very relevant</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Takeaways:</h2>
+		<ol>
+        <li class="next">OMG measure</li>
+        <li class="next">Profile</li>
+        <li class="next">Make your code lazy</li>
+        <li class="next">10ms for JS, Style, Layout, Painting, Compositing</li>
+		</ol>
+	</div></section>
+
+	<section class="slide"><div>
+    <h2>Questions?</h2>
+    <ul>
+    	<li><a href="https://www.twitter.com/mike_conley" target="_blank">@mike_conley</a></li>
+    	<li><a href="https://www.mikeconley.ca" target="_blank">Blog</a></li>
+    	<li><a href="mailto:mconley@mozilla.com" target="_blank">mconley@mozilla.com</a></li>
+    </ul>
+  </div></section>
+
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
 		-->
 	<div class="progress"><div></div></div>
 	<script src="shower/scripts.js"></script>
-	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Copyright © 2016 Mike Conley -->
 </body>
 </html>
